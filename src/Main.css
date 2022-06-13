@@ -1,0 +1,41 @@
+.p_main_board {
+  margin: 0 5rem 0 5rem;
+  font-size: 18px;
+}
+
+.p_main_board_qa {
+  border: solid 1px gold;
+  margin: 2rem 0 2rem 0;
+  height: 470px;
+  padding: 1rem;
+}
+
+.p_main_board_community {
+  border: solid 1px red;
+  margin: 2rem 0 2rem 0;
+  height: 470px;
+  padding: 1rem;
+}
+
+.p_board_title {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.p_main_con {
+}
+
+table {
+  width: 100%;
+  border: solid 1px whitesmoke;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px;
+}
+
+.p_table_right {
+  text-align: right;
+}

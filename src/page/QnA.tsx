@@ -23,9 +23,11 @@ const QnA = () => {
   const boardDataArr = boardData.map((boardList, index) => (
     <tr key={index}>
       <td>
-        <Link to={`/qna/detail/${boardList.qna_no}`}>{boardList.qna_title}</Link>
+        <Link to={`/qna/detail/${boardList.QNA_NO}`}>
+          {boardList.QNA_TITLE}
+        </Link>
       </td>
-      <td className="p_table_right">{boardList.qna_writer}</td>
+      <td className="p_table_right">{boardList.QNA_WRITER}</td>
     </tr>
   ));
   return (

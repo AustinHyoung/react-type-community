@@ -24,9 +24,11 @@ const Main = () => {
   const boardDataArr = boardData.map((boardList, index) => (
     <tr key={index}>
       <td>
-        <Link to={`/qna/detail/${boardList.qna_no}`}>{boardList.qna_title}</Link>
+        <Link to={`/qna/detail/${boardList.QNA_NO}`}>
+          {boardList.QNA_TITLE}
+        </Link>
       </td>
-      <td className="p_table_right">{boardList.qna_writer}</td>
+      <td className="p_table_right">{boardList.QNA_WRITER}</td>
     </tr>
   ));
 
@@ -84,7 +86,7 @@ const Main = () => {
             </div>
             <div className="p_main_con">
               <table>
-                <tbody>{boardDataArr}</tbody>
+                <tbody>1</tbody>
               </table>
             </div>
           </div>
@@ -127,7 +129,7 @@ const Main = () => {
             </div>
             <div className="p_main_con">
               <table>
-                <tbody>{boardDataArr}</tbody>
+                <tbody>1</tbody>
               </table>
             </div>
           </div>

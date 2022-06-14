@@ -12,38 +12,38 @@ const Signup = () => {
   const [emailInput, setEmailInput] = useState('');
   const [phoneInput, setPhoneInput] = useState('');
 
-  const onChangeId = (e) => {
+  const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIdInput(e.target.value);
   };
 
-  const onChangePw = (e) => {
+  const onChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPwInput(e.target.value);
   };
 
-  const onChangeCheckPw = (e) => {
+  const onChangeCheckPw = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPwCheckInput(e.target.value);
   };
 
-  const onChangeName = (e) => {
+  const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNameInput(e.target.value);
   };
 
-  const onChangeBirth = (e) => {
+  const onChangeBirth = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBirthInput(e.target.value);
     console.log(birthInput);
   };
 
-  const onChangeGender = (e) => {
+  const onChangeGender = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setGenderInput(e.target.value);
     console.log(genderInput);
   };
 
-  const onChangeEmail = (e) => {
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailInput(e.target.value);
     console.log(emailInput);
   };
 
-  const onChangePhone = (e) => {
+  const onChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPhoneInput(e.target.value);
     console.log(phoneInput);
   };

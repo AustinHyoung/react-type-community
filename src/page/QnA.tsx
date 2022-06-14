@@ -9,7 +9,7 @@ const QnA = () => {
 
   useEffect(() => {
     axios
-      .post('/apis/qnaboard')
+      .post('/apis/qnaPagingBoard')
       .then((response) => {
         setBoardData(response.data);
       })
@@ -37,7 +37,6 @@ const QnA = () => {
           <div className="p_main_board_qa">
             <div className="p_board_title">
               <span>Q & A</span>
-              <Link to="/qna">더 보기</Link>
             </div>
             <div className="p_main_con">
               <table>

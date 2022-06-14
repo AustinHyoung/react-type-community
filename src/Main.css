@@ -6,14 +6,14 @@
 .p_main_board_qa {
   border: solid 1px gold;
   margin: 2rem 0 2rem 0;
-  height: 470px;
+  height: 100%;
   padding: 1rem;
 }
 
 .p_main_board_community {
   border: solid 1px red;
   margin: 2rem 0 2rem 0;
-  height: 470px;
+  height: 100%;
   padding: 1rem;
 }
 

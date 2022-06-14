@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Mobile, Tablet, PC } from '../MediaQuery';
 import { qnaBoardType } from 'types';
+import styled from 'styled-components';
 
 const QnA = () => {
   const [boardData, setBoardData] = useState<qnaBoardType[]>([]);
@@ -43,6 +44,19 @@ const QnA = () => {
                 <tbody>{boardDataArr}</tbody>
               </table>
             </div>
+            <QnaPaging>
+              <QnaUl>
+                <QnaLi>처음</QnaLi>
+                <QnaLi>&lt;&lt;</QnaLi>
+                <QnaLi>1</QnaLi>
+                <QnaLi>2</QnaLi>
+                <QnaLi>3</QnaLi>
+                <QnaLi>4</QnaLi>
+                <QnaLi>5</QnaLi>
+                <QnaLi>&gt;&gt;</QnaLi>
+                <QnaLi>끝</QnaLi>
+              </QnaUl>
+            </QnaPaging>
           </div>
         </div>
       </PC>
@@ -79,5 +93,22 @@ const QnA = () => {
     </>
   );
 };
+
+const QnaPaging = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+`;
+
+const QnaUl = styled.ul`
+  list-style: none;
+`;
+const QnaLi = styled.li`
+  float: left;
+  cursor: pointer;
+  margin: 0 0.5rem 0 0.5rem;
+  padding: 1rem;
+`;
 
 export default QnA;

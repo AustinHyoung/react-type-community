@@ -44,7 +44,7 @@ const Nav = () => {
             <div className="p_navbar">
               <ul className="p_nav_item">
                 <li className="p_nav_left_list">
-                  <NavLink to="/" className="s">
+                  <NavLink to="/" className="p_nav_choose">
                     메인
                   </NavLink>
                 </li>
@@ -52,23 +52,23 @@ const Nav = () => {
               <div className="p_nav_right_parents">
                 <ul className="p_nav_item">
                   <li className="p_nav_right_list">
-                    <NavLink to="/qna" className="s">
+                    <NavLink to="/qna" className="p_nav_choose">
                       Q & A
                     </NavLink>
                   </li>
                   <li className="p_nav_right_list">
-                    <NavLink to="/community" className="s">
+                    <NavLink to="/community" className="p_nav_choose">
                       커뮤니티
                     </NavLink>
                   </li>
                   <li className="p_nav_right_list">
-                    <Link to="/item3" className="s">
+                    <NavLink to="/item3" className="p_nav_choose">
                       test
-                    </Link>
+                    </NavLink>
                   </li>
                   {!isLogin && (
                     <li className="p_nav_right_list">
-                      <Link to="/signup" className="s">
+                      <Link to="/signup" className="p_nav_choose">
                         회원가입
                       </Link>
                     </li>
@@ -79,7 +79,7 @@ const Nav = () => {
                     </li>
                   ) : (
                     <li className="p_nav_right_list">
-                      <Link to="/login" className="s">
+                      <Link to="/login" className="p_nav_choose">
                         로그인
                       </Link>
                     </li>

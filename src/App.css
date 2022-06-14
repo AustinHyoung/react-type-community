@@ -10,21 +10,21 @@
   color: #f7f1e3;
 }
 
-.s {
+.p_nav_choose {
   padding: 6px;
 }
 
-.s.active {
+.p_nav_choose.active {
   border-radius: 8px;
-  background-color: #44bd32;
+  background-color: #222f3e;
   box-shadow: 0px 0px 3px 1px rgba(47, 54, 64, 0.75);
   -webkit-box-shadow: 0px 0px 3px 1px rgba(47, 54, 64, 0.75);
   -moz-box-shadow: 0px 0px 3px 1px rgba(47, 54, 64, 0.75);
 }
 
-.s:hover {
+.p_nav_choose:hover {
   border-radius: 8px;
-  background-color: #44bd32;
+  background-color: #222f3e;
   box-shadow: 0px 0px 3px 1px rgba(47, 54, 64, 0.75);
   -webkit-box-shadow: 0px 0px 3px 1px rgba(47, 54, 64, 0.75);
   -moz-box-shadow: 0px 0px 3px 1px rgba(47, 54, 64, 0.75);

@@ -39,10 +39,10 @@ const QnADetail = () => {
     </li>
   ));
 
-  var a = undefined;
-  if (boardData !== null && boardData !== undefined) {
-    a = boardData.QNA_WRITER;
-  }
+  // var a = undefined;
+  // if (boardData !== null && boardData !== undefined) {
+  //   a = boardData.QNA_WRITER;
+  // }
 
   return (
     <>

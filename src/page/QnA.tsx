@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Mobile, Tablet, PC } from '../MediaQuery';
 import { qnaBoardType } from 'types';
-import styled from 'styled-components';
+import Pagination from 'components/Pagination';
 
 const QnA = () => {
   const [boardData, setBoardData] = useState<qnaBoardType[]>([]);
+  //paging
+
+  const [limit, setLimit] = useState(25);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
 
   useEffect(() => {
-    axios
-      .post('/apis/qnaPagingBoard')
-      .then((response) => {
-        setBoardData(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const resData = async () => {
+      const response = await axios.post('/apis/qnaPagingBoard');
+      setBoardData(response.data);
+    };
+    resData();
   }, []);
-  console.log('boardData ::: ');
-  console.log(boardData);
-
-  const boardDataArr = boardData.map((boardList, index) => (
-    <tr key={index}>
-      <td>
-        <Link to={`/qna/detail/${boardList.QNA_NO}`}>
-          {boardList.QNA_TITLE}
-        </Link>
-      </td>
-      <td className="p_table_right">{boardList.QNA_WRITER}</td>
-    </tr>
-  ));
+  // 총 게시물 수, 페이지 당 게시물 수, 현재 페이지 번호
+  const currentQnaList = boardData
+    .slice(offset, offset + limit)
+    .map((boardList, index) => (
+      <tr key={index}>
+        <td>
+          <Link to={`/qna/detail/${boardList.QNA_NO}`}>
+            {boardList.QNA_TITLE}
+          </Link>
+        </td>
+        <td className="p_table_right">{boardList.QNA_WRITER}</td>
+      </tr>
+    ));
   return (
     <>
       <PC>
@@ -41,22 +43,15 @@ const QnA = () => {
             </div>
             <div className="p_main_con">
               <table>
-                <tbody>{boardDataArr}</tbody>
+                <tbody>{currentQnaList}</tbody>
               </table>
             </div>
-            <QnaPaging>
-              <QnaUl>
-                <QnaLi>처음</QnaLi>
-                <QnaLi>&lt;&lt;</QnaLi>
-                <QnaLi>1</QnaLi>
-                <QnaLi>2</QnaLi>
-                <QnaLi>3</QnaLi>
-                <QnaLi>4</QnaLi>
-                <QnaLi>5</QnaLi>
-                <QnaLi>&gt;&gt;</QnaLi>
-                <QnaLi>끝</QnaLi>
-              </QnaUl>
-            </QnaPaging>
+            <Pagination
+              total={boardData.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+            />
           </div>
         </div>
       </PC>
@@ -69,7 +64,7 @@ const QnA = () => {
             </div>
             <div className="p_main_con">
               <table>
-                <tbody>{boardDataArr}</tbody>
+                <tbody>{currentQnaList}</tbody>
               </table>
             </div>
           </div>
@@ -84,7 +79,7 @@ const QnA = () => {
             </div>
             <div className="p_main_con">
               <table>
-                <tbody>{boardDataArr}</tbody>
+                <tbody>{currentQnaList}</tbody>
               </table>
             </div>
           </div>
@@ -93,22 +88,5 @@ const QnA = () => {
     </>
   );
 };
-
-const QnaPaging = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 4rem;
-`;
-
-const QnaUl = styled.ul`
-  list-style: none;
-`;
-const QnaLi = styled.li`
-  float: left;
-  cursor: pointer;
-  margin: 0 0.5rem 0 0.5rem;
-  padding: 1rem;
-`;
 
 export default QnA;

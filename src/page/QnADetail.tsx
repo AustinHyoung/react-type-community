@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Mobile, Tablet, PC } from '../MediaQuery';
 import axios from 'axios';
 import '../qnadetail.css';
@@ -9,10 +9,17 @@ const QnADetail = () => {
   const [boardData, setBoardData] = useState<qnaBoardType>();
   const [replyData, setReplyData] = useState<qnaReplyType[]>([]);
   const [replyCnt, setReplyCnt] = useState(0);
+  const [isLogin, setIsLogin] = useState(false);
   const qnaNo = useParams();
   console.log(qnaNo);
 
   useEffect(() => {
+    if (localStorage.getItem('user_info') === null) {
+      setIsLogin(false);
+    } else {
+      setIsLogin(true);
+    }
+
     axios
       .all([
         axios.post('/apis/qnadetail', qnaNo),
@@ -80,6 +87,25 @@ const QnADetail = () => {
             <ul>
               <li className="p_answer_title">답변 {replyCnt}</li>
               {qnaReplyList}
+              <li className="p_answer_main">
+                <div className="p_reply_writer">
+                  <div className="p_reply_login">
+                    {isLogin ? (
+                      <div>
+                        <textarea></textarea>
+                        <button>등록</button>
+                      </div>
+                    ) : (
+                      <span>
+                        <Link to="/login" className="p_reply_login_color">
+                          로그인
+                        </Link>
+                        을 하시면 답변을 등록할 수 있습니다.
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>

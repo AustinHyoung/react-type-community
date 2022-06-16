@@ -1,0 +1,16 @@
+.p_paging_list {
+  float: left;
+  cursor: pointer;
+  margin: 0 0.5rem 0 0.5rem;
+  padding: 1rem;
+}
+.p_paging_list:hover {
+  background-color: #222f3e;
+}
+.p_paging_list.active {
+  background-color: #4b4b4b;
+}
+
+.p_paging_list:focus {
+  background-color: #222f3e;
+}

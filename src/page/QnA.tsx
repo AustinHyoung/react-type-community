@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Mobile, Tablet, PC } from '../MediaQuery';
 import { qnaBoardType } from 'types';
-import Pagination from 'components/Pagination';
+import Pagin from 'react-js-pagination';
+import '../pagin.css';
 
 const QnA = () => {
   const [boardData, setBoardData] = useState<qnaBoardType[]>([]);
@@ -13,6 +14,10 @@ const QnA = () => {
   const [page, setPage] = useState(1);
   const offset = (page - 1) * limit;
 
+  const handlePageChange = (page: number) => {
+    setPage(page);
+  };
+
   useEffect(() => {
     const resData = async () => {
       const response = await axios.post('/apis/qnaPagingBoard');
@@ -20,7 +25,7 @@ const QnA = () => {
     };
     resData();
   }, []);
-  // 총 게시물 수, 페이지 당 게시물 수, 현재 페이지 번호
+
   const currentQnaList = boardData
     .slice(offset, offset + limit)
     .map((boardList, index) => (
@@ -46,11 +51,14 @@ const QnA = () => {
                 <tbody>{currentQnaList}</tbody>
               </table>
             </div>
-            <Pagination
-              total={boardData.length}
-              limit={limit}
-              page={page}
-              setPage={setPage}
+            <Pagin
+              activePage={page}
+              itemsCountPerPage={limit}
+              totalItemsCount={boardData.length}
+              pageRangeDisplayed={5}
+              prevPageText="<"
+              nextPageText=">"
+              onChange={handlePageChange}
             />
           </div>
         </div>

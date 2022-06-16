@@ -1,6 +1,7 @@
+//안씀
 import { useState } from 'react';
 import styled from 'styled-components';
-
+import '../pagination.css';
 const Pagination = ({
   total,
   limit,
@@ -42,7 +43,8 @@ const Pagination = ({
   return (
     <QnaPaging>
       <QnaUl>
-        <QnaLi
+        <li
+          className="p_paging_list"
           onClick={() => {
             setPage(1);
             setBlockNum(0);
@@ -50,27 +52,36 @@ const Pagination = ({
           }}
         >
           처음
-        </QnaLi>
-        <QnaLi
+        </li>
+        <li
+          className="p_paging_list"
           onClick={() => {
             prevPage();
           }}
         >
           &lt;&lt;
-        </QnaLi>
+        </li>
         {pageNumberSlice.map((pageNum) => (
-          <QnaLi key={pageNum} onClick={() => setPage(pageNum)}>
+          <li
+            className="p_paging_list"
+            key={pageNum}
+            onClick={() => {
+              setPage(pageNum);
+            }}
+          >
             {pageNum}
-          </QnaLi>
+          </li>
         ))}
-        <QnaLi
+        <li
+          className="p_paging_list"
           onClick={() => {
             nextPage();
           }}
         >
           &gt;&gt;
-        </QnaLi>
-        <QnaLi
+        </li>
+        <li
+          className="p_paging_list"
           onClick={() => {
             setPage(Math.ceil(total / limit));
             setBlockNum(Math.ceil(Math.ceil(total / limit) / 5));
@@ -78,7 +89,7 @@ const Pagination = ({
           }}
         >
           끝
-        </QnaLi>
+        </li>
       </QnaUl>
     </QnaPaging>
   );

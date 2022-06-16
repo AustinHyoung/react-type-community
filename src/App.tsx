@@ -7,6 +7,7 @@ import Password from 'page/Password';
 import QnA from 'page/QnA';
 import QnADetail from 'page/QnADetail';
 import Signup from 'page/Signup';
+import QnAWrite from 'page/QnAWrite';
 import { Route, Routes } from 'react-router-dom';
 import 'App.css';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/qna/detail/:qnaNo" element={<QnADetail />} />
           <Route path="/community" element={<Community />} />
           <Route path="/item3" element={<Item3 />} />
+          <Route path="/qna/write" element={<QnAWrite />} />
         </Route>
 
         <Route path="/signup" element={<Signup />} />

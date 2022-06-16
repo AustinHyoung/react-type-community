@@ -58,7 +58,7 @@ const QnADetail = () => {
           <div className="p_detail_panel_top">
             <span>Q & A</span>
             <span>
-              <button>새 글 쓰기</button>
+              <Link to="/qna/write">새 글쓰기</Link>
             </span>
           </div>
           <div className="p_detail_board_sub">

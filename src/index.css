@@ -133,3 +133,7 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+
+textarea:focus {
+  outline: none;
+}

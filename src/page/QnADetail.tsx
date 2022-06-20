@@ -6,6 +6,11 @@ import '../qnadetail.css';
 import { qnaBoardType, qnaReplyType } from 'types';
 
 const QnADetail = () => {
+  // 옵셔널 체이닝
+  // var a = undefined;
+  // if (boardData !== null && boardData !== undefined) {
+  //   a = boardData.QNA_WRITER;
+  // }
   const [boardData, setBoardData] = useState<qnaBoardType>();
   const [replyData, setReplyData] = useState<qnaReplyType[]>([]);
   const [replyCnt, setReplyCnt] = useState(0);
@@ -46,10 +51,9 @@ const QnADetail = () => {
     </li>
   ));
 
-  // var a = undefined;
-  // if (boardData !== null && boardData !== undefined) {
-  //   a = boardData.QNA_WRITER;
-  // }
+  const onClickReplyInsert = () => {
+    axios.post('/apis/replyInsert').catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -89,21 +93,25 @@ const QnADetail = () => {
               {qnaReplyList}
               <li className="p_answer_main">
                 <div className="p_reply_writer">
-                  <div className="p_reply_login">
-                    {isLogin ? (
-                      <div>
-                        <textarea></textarea>
-                        <button>등록</button>
-                      </div>
-                    ) : (
-                      <span>
-                        <Link to="/login" className="p_reply_login_color">
-                          로그인
-                        </Link>
-                        을 하시면 답변을 등록할 수 있습니다.
-                      </span>
-                    )}
-                  </div>
+                  {isLogin ? (
+                    <div className="p_reply_space">
+                      <textarea className="p_textarea"></textarea>
+                      <button
+                        type="button"
+                        className="p_custom_btn_small btn_primary"
+                        onClick={onClickReplyInsert}
+                      >
+                        <span>등록</span>
+                      </button>
+                    </div>
+                  ) : (
+                    <span>
+                      <Link to="/login" className="p_reply_login_color">
+                        로그인
+                      </Link>
+                      을 하시면 답변을 등록할 수 있습니다.
+                    </span>
+                  )}
                 </div>
               </li>
             </ul>

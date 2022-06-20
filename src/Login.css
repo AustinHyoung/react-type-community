@@ -109,6 +109,24 @@
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
+.p_custom_btn_small {
+  color: #4b4b4b;
+  width: 15%;
+  text-align: center;
+  padding: 10px 0 10px 0;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
 .btn_primary {
   border: none;
   background: rgb(75, 75, 75);

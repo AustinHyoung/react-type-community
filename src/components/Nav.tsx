@@ -24,7 +24,7 @@ const Nav = () => {
 
   const onClickLogout = () => {
     axios
-      .post('apis/logout')
+      .post('/apis/logout')
       .then((response) => {
         console.log(response);
 

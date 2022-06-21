@@ -15,8 +15,14 @@ const QnADetail = () => {
   const [replyData, setReplyData] = useState<qnaReplyType[]>([]);
   const [replyCnt, setReplyCnt] = useState(0);
   const [isLogin, setIsLogin] = useState(false);
+  const [isContents, setIsContents] = useState('');
+
   const qnaNo = useParams();
-  console.log(qnaNo);
+  const userId = localStorage.getItem('user_info');
+
+  const onChangeContents = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIsContents(e.target.value);
+  };
 
   useEffect(() => {
     if (localStorage.getItem('user_info') === null) {
@@ -39,7 +45,6 @@ const QnADetail = () => {
       )
       .catch((err) => console.log(err));
   }, [qnaNo]);
-  console.log(boardData);
 
   const qnaReplyList = replyData.map((qnaReplyList, index) => (
     <li key={index} className="p_answer_main">
@@ -51,8 +56,20 @@ const QnADetail = () => {
     </li>
   ));
 
+  const param = {
+    replyBoardNo: qnaNo.qnaNo,
+    replyWriter: userId,
+    replyContents: isContents,
+  };
+
   const onClickReplyInsert = () => {
-    axios.post('/apis/replyInsert').catch((err) => console.log(err));
+    axios
+      .post('/apis/replyInsert', param)
+      .then((response) => {
+        console.log(response);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -95,7 +112,11 @@ const QnADetail = () => {
                 <div className="p_reply_writer">
                   {isLogin ? (
                     <div className="p_reply_space">
-                      <textarea className="p_textarea"></textarea>
+                      <textarea
+                        className="p_textarea"
+                        onChange={onChangeContents}
+                        value={isContents}
+                      ></textarea>
                       <button
                         type="button"
                         className="p_custom_btn_small btn_primary"
@@ -105,7 +126,7 @@ const QnADetail = () => {
                       </button>
                     </div>
                   ) : (
-                    <span>
+                    <span className="p_reply_login">
                       <Link to="/login" className="p_reply_login_color">
                         로그인
                       </Link>

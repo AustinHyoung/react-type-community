@@ -16,6 +16,7 @@ const QnADetail = () => {
   const [replyCnt, setReplyCnt] = useState(0);
   const [isLogin, setIsLogin] = useState(false);
   const [isContents, setIsContents] = useState('');
+  const [viewCnt, setViewCnt] = useState(0);
 
   const qnaNo = useParams();
   const userId = localStorage.getItem('user_info');
@@ -35,12 +36,14 @@ const QnADetail = () => {
       .all([
         axios.post('/apis/qnadetail', qnaNo),
         axios.post('/apis/qnareply', qnaNo),
+        axios.post('/apis/qnaViewCnt', qnaNo),
       ])
       .then(
-        axios.spread((res1, res2) => {
+        axios.spread((res1, res2, res3) => {
           setBoardData(res1.data);
           setReplyData(res2.data);
           setReplyCnt(res2.data.length);
+          setViewCnt(res3.data);
         }),
       )
       .catch((err) => console.log(err));
@@ -89,7 +92,7 @@ const QnADetail = () => {
                 <span>작성시간 : {boardData?.QNA_DATE}</span>
               </div>
               <div>
-                <span>조회 수 :{boardData?.QNA_VIEW} </span>
+                <span>조회 수 : {viewCnt} </span>
               </div>
             </div>
             <div className="p_detail_panel2">

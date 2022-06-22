@@ -4,6 +4,7 @@ import { Mobile, Tablet, PC } from '../MediaQuery';
 import axios from 'axios';
 import '../qnadetail.css';
 import { qnaBoardType, qnaReplyType } from 'types';
+import moment from 'moment';
 
 const QnADetail = () => {
   // 옵셔널 체이닝
@@ -53,7 +54,9 @@ const QnADetail = () => {
     <li key={index} className="p_answer_main">
       <div className="p_reply_writer">
         <span>{qnaReplyList.QNA_REPLY_WRITER}</span>
-        <span>{qnaReplyList.QNA_REPLY_DATE}</span>
+        <span>
+          {moment(qnaReplyList.QNA_REPLY_DATE).format('YYYY-MM-DD HH:mm:ss')}
+        </span>
       </div>
       <div className="p_answer_contents">{qnaReplyList.QNA_REPLY_CONTENTS}</div>
     </li>
@@ -75,6 +78,8 @@ const QnADetail = () => {
       .catch((err) => console.log(err));
   };
 
+  console.log(boardData?.QNA_DATE, typeof boardData);
+
   return (
     <>
       <PC>
@@ -89,7 +94,10 @@ const QnADetail = () => {
             <div className="p_detail_panel1">
               <div className="p_detail_wd">
                 <span>작성자 : {boardData?.QNA_WRITER}</span>
-                <span>작성시간 : {boardData?.QNA_DATE}</span>
+                <span>
+                  작성시간 :{' '}
+                  {moment(boardData?.QNA_DATE).format('YYYY-MM-DD HH:mm:ss')}
+                </span>
               </div>
               <div>
                 <span>조회 수 : {viewCnt} </span>
